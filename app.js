@@ -52,7 +52,12 @@ checkDiagonals = () => {
 };
 
 checkBoard = () => {
-  return (checkRows() || checkColumns() || checkDiagonals());
+  var winner = (checkRows() || checkColumns() || checkDiagonals());
+  if (winner) {
+    return winner;
+  } else if (turns === 9) {
+    return 'Nobody';
+  }
 };
 
 updateBoard = (cell_id, nextMove) => {
@@ -104,6 +109,7 @@ resetGame = () => {
     }
   }
   document.getElementById("game-msg").innerText = `Play Tic-Tac-Toe!`;
+  turns = 0;
 };
 
 // add event listener to reset-btn
